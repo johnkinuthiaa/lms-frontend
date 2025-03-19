@@ -7,7 +7,7 @@ export default function DashBoardLayout({
 }>) {
     return (
         <main className={"flex [&>*]:p-4"}>
-            <div className={"fixed "}>
+            <div className={"fixed"}>
                 <Aside/>
             </div>
 

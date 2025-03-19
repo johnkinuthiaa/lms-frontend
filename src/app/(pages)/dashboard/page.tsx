@@ -5,7 +5,7 @@ import CourseCard from "@/components/courseCard";
 
 export default function Dashboard(){
     return(
-        <main className={"flex flex-col"}>
+        <main className={"flex flex-col scroll-smooth scroll dashboard"}>
             <div className={"flex justify-end content-end"}>
                 <TopProfileCard
                     img={"https://i.pinimg.com/236x/be/38/78/be3878c34f93d1663a6e5f6af4b78e9c.jpg"}
@@ -24,12 +24,15 @@ export default function Dashboard(){
                 <CourseInfoCard metrics={2} text={"Active courses"} icon={<Book/>}/>
             </div>
             <div className={"flex mt-16  gap-2"}>
-                <div className={"flex-col flex flex-3/5 border-gray-600 border [&>*]:p-2 "}>
+                <div className={"flex-col flex flex-3/5  [&>*]:p-2 "}>
                     <div className={"text-2xl font-bold content-center"}>My Courses</div>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
+                    <div className={"flex flex-col gap-2"}>
+                        <CourseCard/>
+                        <CourseCard/>
+                        <CourseCard/>
+                        <CourseCard/>
+                    </div>
+
                 </div>
                 <div className={"flex-2/5 border-gray-600 border"}>
                     Active courses

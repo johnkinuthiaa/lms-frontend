@@ -23,7 +23,7 @@ export default function Aside(){
     },[])
 
     return(
-        <aside className={"flex flex-1/12 p-3 flex-col h-[100vh] border-r border-gray-600"}>
+        <aside className={"flex flex-1/12 p-3 flex-col h-[100vh] border-r bg-blend-screen border-gray-600"}>
             <div className={"flex items-center justify-between"}>
                 <p>Main Page</p>
                 <button className={"cursor-pointer"}>
