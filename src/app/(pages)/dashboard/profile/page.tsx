@@ -29,7 +29,7 @@ export default function ProfilePage(){
             if(response.ok){
                 const data =await response.json()
                 if(data.statusCode !=200){
-                    setMessage(data.message)
+                    messageTimeout(data.message)
                     return
                 }
                 const byteCharacters =atob(data?.user?.profileImage)
@@ -41,15 +41,10 @@ export default function ProfilePage(){
                 const blob = new Blob([byteArray]);
                 const myUrl =URL.createObjectURL(blob)
                 setUserProfileImage(myUrl)
-                // setUsername(data?.user?.username)
-                // setLinkedIn(data.user?.linkedin !==null?data.user?.linkedin:"")
-                // setGithub(data.user?.githubAccount !==null?data.user?.githubAccount:"add")
-                // setDescription(data?.user?.userDescription !==null?data.user?.description:"desc")
-                // setMobile(data?.user?.mobileNumber !==null?data.user?.mobileNumber:" number")
 
             }
         }catch (e) {
-            setMessage(">"+e)
+            messageTimeout(e+"")
         }
     })
     const uploadProfilePhoto =(async ()=>{
@@ -57,7 +52,7 @@ export default function ProfilePage(){
         if(typeof (uploadedProfileImage) !="undefined"){
             formData.append("image",uploadedProfileImage)
         }else{
-            setMessage("Profile photo is undefined")
+            messageTimeout("Profile photo is undefined")
             return
         }
         try{
@@ -68,16 +63,23 @@ export default function ProfilePage(){
             if(response.ok){
                 const data =await response.json()
                 if(data.statusCode !=200){
-                    setMessage(data.message)
+                    messageTimeout(data.message)
                 }else{
-                    setMessage(data.message)
+                    messageTimeout(data.message)
                 }
             }
         }catch (e){
-            setMessage(""+e)
+            messageTimeout(e+"")
         }
 
     })
+
+    const messageTimeout =(info:string)=>{
+        setMessage(info)
+        setTimeout(()=>{
+            setMessage("")
+        },3000)
+    }
     return(
         <main className={` flex flex-col mt-4 gap-7 w-[85%] justify-center items-center m-[0 auto]`}>
             <div>{message}</div>
@@ -93,7 +95,7 @@ export default function ProfilePage(){
                     ></Image>
                     <div className={"flex gap-3 [&>*]:rounded-xl [&>*]:cursor-pointer" +
                         " [&>*]:w-fit [&>*]:h-fit [&>*]:p-4 [&>*]:font-bold "}>
-                        <button className={"bg-blue-500"} onClick={()=>setShowProfileImageForm(!showChangeProfileImageForm)}>Change Picture</button>
+                        <button className={"bg-blue-500"} onClick={()=>setShowProfileImageForm(true)}>Change Picture</button>
                         <button className={"bg-red-500"}>DeletePicture</button>
                     </div>
 
@@ -102,7 +104,7 @@ export default function ProfilePage(){
             {showChangeProfileImageForm&&
                 <div className={"absolute z-999 bg-gray-600 " +
                     " shadow-xl w-[20%] " +
-                    "  border border-gray-600  h-50 p-2 w-72 rounded-xl"}>
+                    "  border border-gray-600  text-white h-50 p-2 w-72 rounded-xl"}>
                     {message &&<div>{message}</div>}
                     <form className={"flex items-center flex-col p-3"}>
                         <label>Profile image:</label>
@@ -114,7 +116,7 @@ export default function ProfilePage(){
                                        if(e.target.files !==null) {
                                            setUploadedProfileImage(e.target.files[0])
                                        }else {
-                                           setMessage("Profile image should not be blank")
+                                           messageTimeout("Profile image should not be blank")
                                        }
                                    }}
                             />
