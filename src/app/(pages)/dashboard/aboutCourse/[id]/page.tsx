@@ -1,7 +1,8 @@
-export default function CourseInformation ({params}:{params:{id:string}}) {
-    const courseId =params.id
+import {use} from "react";
+export default  function CourseInformation ({ params }: { params: Promise<{ id: string }> }) {
+    const {id} =use(params)
     return(
-        <div>{courseId}</div>
+        <div>{id}</div>
     )
 
 }

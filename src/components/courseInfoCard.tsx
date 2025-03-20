@@ -2,7 +2,7 @@
 type InfoProps={
     metrics:number,
     text:string
-    icon: never
+    icon: string
 
 }
 export default function CourseInfoCard({metrics,text,icon}:InfoProps){
