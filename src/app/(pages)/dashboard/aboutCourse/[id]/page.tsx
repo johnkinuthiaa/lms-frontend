@@ -45,7 +45,6 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
         }catch (e) {
             throw new Error("Error"+e)
         }
-
     })
     return(
         <div className={"w-[80%]"}>
