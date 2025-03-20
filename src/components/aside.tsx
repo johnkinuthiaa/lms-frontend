@@ -33,7 +33,7 @@ export default function Aside(){
             <nav className={"mt-16 [&>div]:p-4 [&>div]:rounded-xl [&>div]:font-medium [&>div]:cursor-pointer [&>div]:mt-2 [&>div]:flex [&>div]:gap-3 [&>div]:align-center [&>div]:hover:bg-gray-700"}>
                 <div
                     onClick={()=>router.push("/dashboard")}
-                    className={`${pathname==="/dashboard"&&"bg-blue-500"}`}>
+                    className={`${pathname.substring(0,10)==="/dashboard"&&"bg-blue-500"}`}>
                     <Dashboard/>Dashboard
                 </div>
                 <div

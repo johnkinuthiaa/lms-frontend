@@ -13,9 +13,13 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
+    "@tinymce/tinymce-react": "^6.0.0",
     "next": "15.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tinymce": "^7.7.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
