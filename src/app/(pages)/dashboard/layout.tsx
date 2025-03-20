@@ -10,7 +10,6 @@ export default function DashBoardLayout({
             <div className={"fixed"}>
                 <Aside/>
             </div>
-
             <div className={"flex flex-10/12 mt-2 ml-56 "}>
                 {children}
             </div>
