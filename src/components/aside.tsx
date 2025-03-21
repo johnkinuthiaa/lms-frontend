@@ -1,5 +1,6 @@
 "use client"
 import {usePathname, useRouter} from "next/navigation";
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import {
     ArrowRight,
     BarChart,
@@ -65,6 +66,11 @@ export default function Aside(){
                     onClick={()=>router.push("/dashboard/orderHistory")}
                     className={`${pathname==="/dashboard/orderHistory"&&"bg-blue-500"}`}>
                     <CheckBox/>Order History
+                </div>
+                <div
+                    onClick={()=>router.push("/dashboard/powerAi")}
+                    className={`${pathname==="/dashboard/powerAi"&&"bg-blue-500"}`}>
+                    <SmartToyIcon/>Chatgibiti wrapper
                 </div>
                 <div><Logout/>Logout</div>
             </nav>
