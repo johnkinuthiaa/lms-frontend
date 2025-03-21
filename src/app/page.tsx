@@ -1,10 +1,10 @@
 "use client"
-import Tinymc from "@/components/tinyMce/createLesson/tinymc";
+import Editor from "@/components/tinyMce/createLesson/tinymc";
 
 export default function Home() {
   return (
     <main>main page
-      <Tinymc/>
+      <Editor/>
     </main>
   );
 }
