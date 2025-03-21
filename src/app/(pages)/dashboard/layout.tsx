@@ -1,8 +1,6 @@
 import Aside from "@/components/aside";
 
-export default function DashBoardLayout({
-    children,
-}: Readonly<{
+export default function DashBoardLayout({children,}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
