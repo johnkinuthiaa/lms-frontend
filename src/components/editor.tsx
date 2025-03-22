@@ -1,8 +1,11 @@
 import remarkGfm from 'remark-gfm'
 import Markdown from 'react-markdown'
 
-export default function MarkdownToJsx(children:string){
+type MarkdownProps ={
+    content:string
+}
+export default function MarkdownToJsx({content}:MarkdownProps){
     return(
-        <Markdown remarkPlugins={[remarkGfm]}>{children}</Markdown>
+        <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
     )
 }

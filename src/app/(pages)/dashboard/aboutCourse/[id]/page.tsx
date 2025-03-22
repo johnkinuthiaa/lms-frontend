@@ -67,6 +67,10 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
                     <div
                         key={index}
                         className={"h-96 cursor-pointer hover:shadow-2xl hover:translate-1"}
+                        onClick={(e)=>{
+                            e.preventDefault()
+                            router.push(`/dashboard/aboutCourse/module/${mod.id}`)
+                        }}
                         id={mod.id}>
                         <Image
                             src={"https://i.pinimg.com/736x/06/98/6a/06986a1609bd2fcbd8cb047c789738d0.jpg"}
