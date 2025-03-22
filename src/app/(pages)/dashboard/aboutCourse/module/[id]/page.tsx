@@ -15,8 +15,11 @@ export default function ModuleContents({ params }: { params: Promise<{ id: strin
     const changeUrl =()=>window?.history.replaceState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl)
     const ALL_LESSONS_URL =`http://localhost:8080/api/v1/lessons/all-in/${id}`
     const[allLessonsInModule,setAllLessonsInModule] =useState<ModuleContents[]>([])
+    const[fetched,setFetched] =useState(false)
     useEffect(()=>{
-        fetchAllLessonsInModule()
+        fetchAllLessonsInModule().then(()=>{
+            setFetched(true)
+        })
         changeUrl()
     },[])
     const fetchAllLessonsInModule =(async ()=>{
@@ -45,11 +48,14 @@ export default function ModuleContents({ params }: { params: Promise<{ id: strin
     })
     return(
         <div>
-            <LessonContents
-                id={allLessonsInModule[0].id}
-                slug={allLessonsInModule[0].slug}
-                title={allLessonsInModule[0].title}
-                content={allLessonsInModule[3].content}/>
+            {fetched &&
+                <LessonContents
+                    id={allLessonsInModule[0]?.id}
+                    slug={allLessonsInModule[0]?.slug}
+                    title={allLessonsInModule[0]?.title}
+                    content={allLessonsInModule[4]?.content}/>
+            }
+
         </div>
     )
 }

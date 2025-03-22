@@ -1,4 +1,5 @@
-import MarkdownToJsx from "@/components/editor";
+
+import ReadText from "./tinyMce/readText";
 
 type LessonContentsProps ={
     id:string,
@@ -11,10 +12,8 @@ export default function LessonContents({id,title,content}:LessonContentsProps){
         <div id={id} className={"w-[80%] flex flex-col mt-10"}>
             <div className={"font-bold text-xl text-center"}>{title}</div>
             <div className={"mt-4"}>
-
-                {content}
+                <ReadText contents={content}/>
             </div>
-            <MarkdownToJsx content={content}/>
         </div>
     )
 
