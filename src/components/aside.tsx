@@ -26,7 +26,7 @@ export default function Aside(){
     return(
         <aside className={"flex flex-1/12 p-3 flex-col h-[100vh] border-r bg-blend-screen border-gray-600"}>
             <div className={"flex items-center justify-between"}>
-                <p>Main Page</p>
+                <div className={"text-xl font-bold"}>Lms</div>
                 <button className={"cursor-pointer"}>
                     {dashboardOpen?<Close/>:<ArrowRight/>}
                 </button>
@@ -34,7 +34,7 @@ export default function Aside(){
             <nav className={"mt-16 [&>div]:p-4 [&>div]:rounded-xl [&>div]:font-medium [&>div]:cursor-pointer [&>div]:mt-2 [&>div]:flex [&>div]:gap-3 [&>div]:align-center [&>div]:hover:bg-gray-700"}>
                 <div
                     onClick={()=>router.push("/dashboard")}
-                    className={`${pathname.substring(0,10)==="/dashboard"&&"bg-blue-500"}`}>
+                    className={`${pathname==="/dashboard"&&"bg-blue-500"}`}>
                     <Dashboard/>Dashboard
                 </div>
                 <div

@@ -1,6 +1,3 @@
-
-import ReadText from "./tinyMce/readText";
-
 type LessonContentsProps ={
     id:string,
     slug:string,
@@ -8,13 +5,17 @@ type LessonContentsProps ={
     content:string,
 }
 export default function LessonContents({id,title,content}:LessonContentsProps){
+    const tile =document.getElementById("title")
+    if(tile !=null &&content !=null){
+        tile.innerHTML =content
+    }
     return(
-        <div id={id} className={"w-[80%] flex flex-col mt-10"}>
+        <main id={id} className={"flex flex-col w-[80%] m-[0 auto] justify-center items-center "}>
             <div className={"font-bold text-xl text-center"}>{title}</div>
-            <div className={"mt-4"}>
-                <ReadText contents={content}/>
+            <div className={" max-w-[1000px] min-w-[900px] p-2 rounded-xl border min-h-[90vh] border-gray-700"}>
+                <section id={"title"} className={"leading-7 p-2"}></section>
             </div>
-        </div>
+        </main>
     )
 
 }

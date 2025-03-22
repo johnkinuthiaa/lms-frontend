@@ -7,16 +7,42 @@ type MessageStructure={
     content:string,
     sender:"USER"|"AI"
 }
+type Resp ={
+    candidates: [{
+        content: {
+            parts: [{
+                text: string
+            }
+            ]
+        }
+    }]
+}
 export default function AiWrapper(){
     const[messages,setMessages] =useState<MessageStructure[]>([])
     const[singleMessage,setSingleMessage]=useState<MessageStructure>({content: "how may we assist you", sender: "AI"})
     const[text,setText]=useState<string>("")
     const[copied,setCopied] =useState(false)
+    const[aiResponse,setAiResponse] =useState<Resp>({candidates: [{content: {parts: [{text: ""}]}}]})
+    const[realAiText,setRealAiText] =useState<MessageStructure>({content: "", sender: "AI"})
+    const[loading,setLoading]=useState(false)
 
     useEffect(() => {
         setMessages([...messages,singleMessage])
     }, []);
-
+    const url=``
+    async function chat() {
+        setLoading(true)
+        const response =await fetch(url,{
+            method:"POST",
+            body:JSON.stringify(
+                {contents: [{parts: [{text: singleMessage.content}]}]}
+            ),
+        })
+        const data =await response.json()
+        setRealAiText({content: data.candidates[0].content.parts[0].text, sender: "AI"})
+        setMessages([...messages,realAiText])
+        setLoading(false)
+    }
     return(
         <main className={"flex flex-col h-[88vh]  w-[80%] m-auto items-center ml-10 "}>
             <div className={"font-extrabold  text-xl"}>Try out our chatgpt wrapper</div>
@@ -46,8 +72,9 @@ export default function AiWrapper(){
                 <form className={"w-full flex gap-2"}
                       onSubmit={(e)=>{
                           e.preventDefault()
-                          if(text !=="") {
+                          if(text !=="" && !loading) {
                               setMessages([...messages,singleMessage])
+                              chat()
                           }
                           setText("")
 
@@ -65,7 +92,7 @@ export default function AiWrapper(){
                     />
                     <button
                         type={"submit"}
-                        className={"rounded-xl p-2 cursor-pointer bg-gray-700"}
+                        className={`${loading && "cursor-not-allowed"}  rounded-xl p-2 cursor-pointer bg-gray-700`}
                     ><Send/></button>
                 </form>
 

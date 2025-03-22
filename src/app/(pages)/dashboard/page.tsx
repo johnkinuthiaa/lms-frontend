@@ -2,6 +2,7 @@ import TopProfileCard from "@/components/topprofileCard";
 
 import CourseCard from "@/components/courseCard";
 import CourseInfoCard from "@/components/courseInfoCard";
+import AllCourses from "@/app/(pages)/dashboard/allCourses/page";
 
 export default function Dashboard(){
     return(
@@ -27,10 +28,7 @@ export default function Dashboard(){
                 <div className={"flex-col flex flex-3/5  [&>*]:p-2 "}>
                     <div className={"text-2xl font-bold content-center"}>My Courses</div>
                     <div className={"flex flex-col gap-2"}>
-                        <CourseCard/>
-                        <CourseCard/>
-                        <CourseCard/>
-                        <CourseCard/>
+                        <AllCourses/>
                     </div>
 
                 </div>

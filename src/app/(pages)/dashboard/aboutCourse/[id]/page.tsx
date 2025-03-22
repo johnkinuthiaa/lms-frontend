@@ -47,7 +47,6 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
                 const data =await response.json()
                 if(data.statusCode !=200){
                     console.log(data.message)
-                    return
                 }
                 setCourse(data?.course)
             }
@@ -56,7 +55,7 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
         }
     })
     return(
-        <div className={"w-[80%]"}>
+        <div className={"w-[80%] justify-center items-center m-[0 auto] flex flex-col"}>
             <div className={"w-[80%] m-[0 auto] flex flex-col justify-center items-center gap-2"} id={course?.id}>
                 <div className={"font-bold mt-10"}>{course?.title}</div>
                 <div className={"leading-7"}>{course?.description}</div>
@@ -74,9 +73,9 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
                         id={mod.id}>
                         <Image
                             src={"https://i.pinimg.com/736x/06/98/6a/06986a1609bd2fcbd8cb047c789738d0.jpg"}
-                            height={100}
+                            height={1000}
                             className={"w-full h-70 p-1 rounded-xl"}
-                            width={100} alt={mod.title}>
+                            width={1000} alt={mod.title}>
 
                         </Image>
                         <div className={"font-bold mt-4 p-2"}>{mod.title}</div>
