@@ -1,6 +1,7 @@
 "use client"
 import {use, useEffect, useState} from "react";
 import Image from "next/image";
+import {useRouter} from "next/navigation";
 type CourseParams ={
     id:string,
     title:string,
@@ -8,8 +9,10 @@ type CourseParams ={
     modulesInCourse:[{
         id:string,
         title:string,
-        slug:string
-        }
+        slug:string,
+        moduleImage:string
+        lessonsInModule:object[]
+    }
     ],
     createdOn:string,
     slug:string
@@ -17,11 +20,17 @@ type CourseParams ={
 export default  function CourseInformation ({ params }: { params: Promise<{ id: string }> }) {
     const {id} =use(params)
     const COURSE_URL =`http://localhost:8080/api/v1/courses/${id}/get`
+    const router =useRouter()
+
     const[course,setCourse]=useState<CourseParams>({
         createdOn: "",
         description: "",
         id: "",
-        modulesInCourse: [{id: "", slug: "", title: ""}],
+        modulesInCourse: [{
+            id: "", slug: "", title: "",
+            moduleImage: "",
+            lessonsInModule: []
+        }],
         slug: "",
         title: ""
     })
@@ -48,13 +57,13 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
     })
     return(
         <div className={"w-[80%]"}>
-            <div className={"w-[80%] m-[0 auto] flex flex-col justify-center items-center gap-2"} id={course.id}>
-                <div className={"font-bold mt-10"}>{course.title}</div>
-                <div className={"leading-7"}>{course.description}</div>
+            <div className={"w-[80%] m-[0 auto] flex flex-col justify-center items-center gap-2"} id={course?.id}>
+                <div className={"font-bold mt-10"}>{course?.title}</div>
+                <div className={"leading-7"}>{course?.description}</div>
             </div>
             <div className={"mt-10 font-bold"}>Modules in course:</div>
             <div className={"flex gap-2 w-full flex-wrap justify-between p-4 [&>*]:rounded-xl  [&>*]:border [&>*]:border-gray-700"}>
-                {course.modulesInCourse.map((mod,index:number)=>(
+                {course?.modulesInCourse.map((mod,index:number)=>(
                     <div
                         key={index}
                         className={"h-96 cursor-pointer hover:shadow-2xl hover:translate-1"}
