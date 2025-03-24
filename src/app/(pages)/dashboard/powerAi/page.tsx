@@ -29,8 +29,12 @@ export default function AiWrapper(){
     useEffect(() => {
         setMessages([...messages,singleMessage])
     }, []);
-    const url=``
+    const url:string|undefined=process.env.NEXT_PUBLIC_GEMINI_KEY
+
     async function chat() {
+        if(typeof (url)==="undefined"){
+            return
+        }
         setLoading(true)
         const response =await fetch(url,{
             method:"POST",
@@ -38,10 +42,19 @@ export default function AiWrapper(){
                 {contents: [{parts: [{text: singleMessage.content}]}]}
             ),
         })
-        const data =await response.json()
-        setRealAiText({content: data.candidates[0].content.parts[0].text, sender: "AI"})
-        setMessages([...messages,realAiText])
-        setLoading(false)
+        if(response.status ===200){
+            const data =await response.json()
+            if(data){
+                setRealAiText({content: data.candidates[0].content.parts[0].text, sender: "AI"})
+                messages.push(realAiText)
+                setMessages(messages)
+                // setRealAiText({content: "", sender: "AI"})
+                console.log(realAiText)
+                setLoading(false)
+            }
+
+        }
+
     }
     return(
         <main className={"flex flex-col h-[88vh]  w-[80%] m-auto items-center ml-10 "}>

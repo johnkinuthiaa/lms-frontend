@@ -72,7 +72,9 @@ export default function Aside(){
                     className={`${pathname==="/dashboard/powerAi"&&"bg-blue-500"}`}>
                     <SmartToyIcon/>Chatgibiti wrapper
                 </div>
-                <div><Logout/>Logout</div>
+                <div onClick={()=> {
+                    router.push("/")
+                }}><Logout/>Logout</div>
             </nav>
         </aside>
     )
