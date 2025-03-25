@@ -10,8 +10,6 @@ export default function Login(){
     const router =useRouter()
     const [loading,setLoading] =useState(false)
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     const {setAuth} =useContext(AuthContext)
 
     const Login =(async ()=>{

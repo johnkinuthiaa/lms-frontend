@@ -13,6 +13,7 @@ import {
     School,
     Star
 } from "@mui/icons-material";
+import { LuBrain } from "react-icons/lu";
 import {useEffect, useState} from "react";
 
 export default function Aside(){
@@ -61,6 +62,11 @@ export default function Aside(){
                     onClick={()=>router.push("/dashboard/quizzes")}
                     className={`${pathname==="/dashboard/MyQuizzes"&&"bg-blue-500"}`}>
                     <BarChart/>My quizzes
+                </div>
+                <div
+                    onClick={()=>router.push("/dashboard/quizzes")}
+                    className={`${pathname==="/dashboard/MyQuizzes"&&"bg-blue-500"}`}>
+                    <LuBrain />Coding challenges
                 </div>
                 <div
                     onClick={()=>router.push("/dashboard/orderHistory")}
