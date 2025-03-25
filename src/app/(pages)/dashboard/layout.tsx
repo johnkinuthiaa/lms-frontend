@@ -18,7 +18,7 @@ export default function DashBoardLayout({children,}: Readonly<{
             <div className={"fixed"}>
                 <Aside/>
             </div>
-            <div className={"flex w-full mt-2 ml-56 "}>
+            <div className={"flex w-[80%] mt-2 ml-56 "}>
                 {children}
             </div>
 

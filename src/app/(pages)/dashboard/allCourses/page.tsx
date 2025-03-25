@@ -43,7 +43,7 @@ export default function AllCourses(){
 
     }
     return(
-        <main className={"m-auto flex flex-col w-[80%] items-center justify-center"}>
+        <main className={"m-auto flex flex-col w-full items-center justify-center"}>
             <div className={"text-xl font-bold mt-10"}>All our courses</div>
             {message}
             <section className={"flex flex-wrap mt-4"}>

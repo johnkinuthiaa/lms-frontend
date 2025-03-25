@@ -3,7 +3,7 @@ import {usePathname, useRouter} from "next/navigation";
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import {
     ArrowRight,
-    BarChart,
+    BarChart, Biotech,
     Book,
     CheckBox,
     Close,
@@ -66,7 +66,7 @@ export default function Aside(){
                 <div
                     onClick={()=>router.push("/dashboard/quizzes")}
                     className={`${pathname==="/dashboard/MyQuizzes"&&"bg-blue-500"}`}>
-                    <LuBrain />Coding challenges
+                    <Biotech />Coding challenges
                 </div>
                 <div
                     onClick={()=>router.push("/dashboard/orderHistory")}
@@ -79,6 +79,7 @@ export default function Aside(){
                     <SmartToyIcon/>Chatgibiti wrapper
                 </div>
                 <div onClick={()=> {
+                    sessionStorage.clear()
                     router.push("/")
                 }}><Logout/>Logout</div>
             </nav>
