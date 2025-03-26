@@ -1,6 +1,6 @@
 "use client"
 import AdminSidebar from "@/components/adminSidebar/adminSidebar";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useRouter} from "next/navigation";
 
 type UserInfo={
@@ -11,7 +11,6 @@ type UserInfo={
 export default function AdminLayout({children,}: Readonly<{
     children: React.ReactNode;
 }>){
-    const[roles,setRole] =useState<string>("")
     const router =useRouter()
     useEffect(() => {
         const userInfo:UserInfo =JSON.parse(sessionStorage.getItem("user") as string)
@@ -21,11 +20,7 @@ export default function AdminLayout({children,}: Readonly<{
         if(userInfo?.role ==="STUDENT"){
             router.push("/")
         }
-        // if(typeof(sessionStorage?.getItem("user")) ==="string"){
-        //
-        // }else{
-        //     router.push("/")
-        // }
+
     }, []);
     return(
         <main className={"flex gap-2 h-full"}>

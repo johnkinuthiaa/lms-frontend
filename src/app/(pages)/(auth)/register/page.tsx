@@ -1,7 +1,6 @@
 "use client"
 import {useState} from "react"
 import {useRouter} from "next/navigation"
-import Modal from "@/components/modal"
 
 export default function Signup(){
     const[username,setUsername] =useState<string>("")

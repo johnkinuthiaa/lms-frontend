@@ -103,8 +103,8 @@ export default function Editor({lessonTitle,moduleId,courseId,userId}:EditorProp
         if (url) {
             editor?.commands.setYoutubeVideo({
                 src: url,
-                width: Math.max(320, parseInt(width, 10)) || 640,
-                height: Math.max(180, parseInt(height, 10)) || 480,
+                width: Math.max(320, width, 10) || 640,
+                height: Math.max(180, height, 10) || 480,
             })
         }
     }
@@ -321,7 +321,7 @@ export default function Editor({lessonTitle,moduleId,courseId,userId}:EditorProp
                         max="1024"
                         placeholder="width"
                         value={width}
-                        onChange={event => setWidth(event.target.value)}
+                        onChange={event => setWidth(parseInt(event.target.value))}
                     />
                     <input
                         id="height"
@@ -330,7 +330,7 @@ export default function Editor({lessonTitle,moduleId,courseId,userId}:EditorProp
                         max="720"
                         placeholder="height"
                         value={height}
-                        onChange={event => setHeight(event.target.value)}
+                        onChange={event => setHeight(parseInt(event.target.value))}
                     />
                     <button id="add" onClick={addYoutubeVideo}>Add YouTube video</button>
                 </div>

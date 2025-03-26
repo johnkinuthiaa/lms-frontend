@@ -7,22 +7,22 @@ type MessageStructure={
     content:string,
     sender:"USER"|"AI"
 }
-type Resp ={
-    candidates: [{
-        content: {
-            parts: [{
-                text: string
-            }
-            ]
-        }
-    }]
-}
+// type Resp ={
+//     candidates: [{
+//         content: {
+//             parts: [{
+//                 text: string
+//             }
+//             ]
+//         }
+//     }]
+// }
 export default function AiWrapper(){
     const[messages,setMessages] =useState<MessageStructure[]>([])
     const[singleMessage,setSingleMessage]=useState<MessageStructure>({content: "how may we assist you", sender: "AI"})
     const[text,setText]=useState<string>("")
     const[copied,setCopied] =useState(false)
-    const[aiResponse,setAiResponse] =useState<Resp>({candidates: [{content: {parts: [{text: ""}]}}]})
+
     const[realAiText,setRealAiText] =useState<MessageStructure>({content: "", sender: "AI"})
     const[loading,setLoading]=useState(false)
 
