@@ -1,7 +1,7 @@
 "use client"
 import {useState,useContext} from "react";
 import {useRouter} from "next/navigation";
-import AuthContext from "@/context/authProvider";
+
 
 export default function Login(){
     const[email,setEmail] =useState<string>("")
@@ -10,7 +10,7 @@ export default function Login(){
     const router =useRouter()
     const [loading,setLoading] =useState(false)
 
-    const {setAuth} =useContext(AuthContext)
+
 
     const Login =(async ()=>{
         setLoading(true)
@@ -33,7 +33,6 @@ export default function Login(){
 
                     setMessage(data?.message)
                     sessionStorage.setItem("user",JSON.stringify(data?.user))
-                    setAuth(data?.user)
                     router.push("/dashboard")
                     setLoading(false)
                 }else{

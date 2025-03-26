@@ -10,10 +10,10 @@ export default function LessonContents({id,title,content}:LessonContentsProps){
         tile.innerHTML =content
     }
     return(
-        <main id={id} className={"flex flex-col w-[80%] m-[0 auto] justify-center items-center "}>
-            <div className={"font-bold text-xl text-center"}>{title}</div>
-            <div className={" max-w-[1000px] min-w-[900px] p-2 rounded-xl border min-h-[90vh] border-gray-700"}>
-                <section id={"title"} className={"leading-7 p-2"}></section>
+        <main id={id} className={"flex flex-col lg:w-[80%] md:w-[80%] w-full  m-[2px auto] justify-center items-center "}>
+            <div className={"font-bold text-xl mb-4  text-center"}>{title}</div>
+            <div className={"w-full  p-2 rounded-xl border h-full  border-gray-700"}>
+                <section id={"title"} className={"leading-7  w-full p-2"}></section>
             </div>
         </main>
     )

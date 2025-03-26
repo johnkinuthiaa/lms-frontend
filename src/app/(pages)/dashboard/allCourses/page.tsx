@@ -43,10 +43,10 @@ export default function AllCourses(){
 
     }
     return(
-        <main className={"m-auto flex flex-col w-full items-center justify-center"}>
+        <main className={"m-auto flex flex-col w-full p-2"}>
             <div className={"text-xl font-bold mt-10"}>All our courses</div>
             {message}
-            <section className={"flex flex-wrap mt-4"}>
+            <section className={"flex lg:flex-wrap md:flex-row lg:flex-row  md:flex-wrap flex-col mt-4"}>
                 {courseList?.map((course,index)=>(
                     <CourseCard
                         key={index}

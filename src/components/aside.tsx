@@ -13,7 +13,6 @@ import {
     School,
     Star
 } from "@mui/icons-material";
-import { LuBrain } from "react-icons/lu";
 import {useEffect, useState} from "react";
 
 export default function Aside(){
@@ -25,14 +24,14 @@ export default function Aside(){
     },[])
 
     return(
-        <aside className={"flex flex-1/12 p-3 flex-col h-[100vh] border-r bg-blend-screen border-gray-600"}>
+        <aside className={"flex flex-2/12 p-3 flex-col h-[100vh] border-r bg-blend-screen border-gray-600"}>
             <div className={"flex items-center justify-between"}>
                 <div className={"text-xl font-bold"}>Lms</div>
                 <button className={"cursor-pointer"}>
                     {dashboardOpen?<Close/>:<ArrowRight/>}
                 </button>
             </div>
-            <nav className={"mt-16 [&>div]:p-4 [&>div]:rounded-xl [&>div]:font-medium [&>div]:cursor-pointer [&>div]:mt-2 [&>div]:flex [&>div]:gap-3 [&>div]:align-center [&>div]:hover:bg-gray-700"}>
+            <nav className={"mt-9 [&>div]:p-4 [&>div]:rounded-xl [&>div]:font-medium [&>div]:cursor-pointer [&>div]:mt-2 [&>div]:flex [&>div]:gap-3 [&>div]:align-center [&>div]:hover:bg-gray-700"}>
                 <div
                     onClick={()=>router.push("/dashboard")}
                     className={`${pathname==="/dashboard"&&"bg-blue-500"}`}>

@@ -2,6 +2,12 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
 
+type User={
+    id:number
+    username:string
+    email:string
+    mobile:string
+}
 export default function ProfilePage(){
     const[username,setUsername]=useState<string>("")
     const[email,setEmail]=useState<string>("")
@@ -11,14 +17,33 @@ export default function ProfilePage(){
     const[description,setDescription]=useState<string>("")
     const[message,setMessage]=useState<string>("")
     const[uploadedProfileImage,setUploadedProfileImage] =useState<Blob|undefined>(undefined)
-    const userId =1
+    const [userId,setUserId]=useState(0)
     const userUrl =`http://localhost:8080/api/v1/users/${userId}/get`
     const uploadUrl =`http://localhost:8080/api/v1/users/${userId}/upload-profile-photo`
     const[showChangeProfileImageForm,setShowProfileImageForm] =useState(false)
+
     const [userProfileImage,setUserProfileImage]=useState<string>("https://i.pinimg.com/236x/be/38/78/be3878c34f93d1663a6e5f6af4b78e9c.jpg")
     useEffect(() => {
-        getUserProfile()
+        const user:User|null =JSON.parse(sessionStorage?.getItem("user") as string)
+        if(user !==null){
+            setUserId(user?.id)
+            setUsername(user?.username)
+            setEmail(user?.email)
+            setMobile(user?.mobile)
+
+        }
+
     }, []);
+
+    useEffect(()=>{
+        if(userId !== 0){
+            getUserProfile();
+        }
+    },[userId])
+
+    useEffect(()=>{
+
+    },[userProfileImage])
 
     const getUserProfile =(async ()=>{
         try{
@@ -81,10 +106,10 @@ export default function ProfilePage(){
         },3000)
     }
     return(
-        <main className={` flex flex-col mt-4 gap-7 w-[85%] justify-center items-center m-[0 auto]`}>
+        <main className={`flex flex-col lg:mt-4 md:mt-4 mt-1 gap-7 md:w-[85%] lg:w-[85%] w-full justify-center items-center m-[0 auto]`}>
             <div>{message}</div>
             <div className={`flex flex-col gap-2 ${showChangeProfileImageForm&&"blur-2xl"}`}>
-                <p className={"font-bold mb-2"}>Profile picture</p>
+                <p className={"font-bold mb-2 text-center md:text-start lg:text-start"}>My profile</p>
                 <div className={"flex gap-4 items-center"}>
                     <Image
                         src={userProfileImage}
@@ -94,7 +119,7 @@ export default function ProfilePage(){
                         className={"rounded-full h-25 w-25"}
                     ></Image>
                     <div className={"flex gap-3 [&>*]:rounded-xl [&>*]:cursor-pointer" +
-                        " [&>*]:w-fit [&>*]:h-fit [&>*]:p-4 [&>*]:font-bold "}>
+                        " [&>*]:w-fit [&>*]:h-fit [&>*]:p-2 lg:[&>*]:p-4 [&>*]:font-bold "}>
                         <button className={"bg-blue-500"} onClick={()=>setShowProfileImageForm(true)}>Change Picture</button>
                         <button className={"bg-red-500"}>DeletePicture</button>
                     </div>
@@ -103,15 +128,16 @@ export default function ProfilePage(){
             </div>
             {showChangeProfileImageForm&&
                 <div className={"absolute z-999 bg-gray-600 " +
-                    " shadow-xl w-[20%] " +
-                    "  border border-gray-600  text-white h-50 p-2 w-72 rounded-xl"}>
+                    " shadow-xl lg:w-[20%] top-52 md:w-[30%] " +
+                    "  border border-gray-600  text-white md:h-40 h-fit lg:h-50 p-2 w-72 rounded-xl"}>
                     {message &&<div>{message}</div>}
                     <form className={"flex items-center flex-col p-3"}>
-                        <label>Profile image:</label>
+                        <label>Select Profile image:</label>
                         <div className={"p-2 gap-2 flex flex-col"}>
                             <input type={"file"}
+                                   accept={"image/*"}
                                    placeholder={"select image..."}
-                                   className={"border ] border-gray-700 rounded-xl p-2 cursor-pointer"}
+                                   className={"border border-gray-400 rounded p-2 cursor-pointer"}
                                    onChange={(e)=> {
                                        if(e.target.files !==null) {
                                            setUploadedProfileImage(e.target.files[0])

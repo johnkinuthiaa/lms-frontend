@@ -35,7 +35,7 @@ export default function TopProfileCard(){
         }
     },[])
     return(
-        <div className={"flex gap-1"} id={id}>
+        <div className={"flex gap-1 items-center"} id={id}>
             <Image
                 src={image?image:"https://i.pinimg.com/236x/77/af/ff/77afff1ec418fba07ca2e9f31e13d6d9.jpg"}
                 alt={name+"profile image"}
@@ -43,9 +43,8 @@ export default function TopProfileCard(){
                 height={100}
                 width={100}
             />
-            <div className={"flex flex-col gap-1"}>
+            <div className={""}>
                 <p className={"font-bold"}>{name}</p>
-                <p className={"font-light"}>{role}</p>
             </div>
         </div>
     )

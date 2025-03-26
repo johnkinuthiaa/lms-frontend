@@ -1,6 +1,8 @@
 "use client"
 import {use, useEffect, useState} from "react"
 import LessonContents from "@/components/lessonContents";
+import {Close} from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu';
 
 interface ModuleContents {
     id:string,
@@ -15,8 +17,9 @@ export default function ModuleContents({ params }: { params: Promise<{ id: strin
     const[allLessonsInModule,setAllLessonsInModule] =useState<ModuleContents[]>([])
     const[fetched,setFetched] =useState(false)
     const[title,setTitle] =useState<string>("")
-    const[moduleId,setModuleId] =useState<string>("")
-    const[writtenMaterial,setWrittenMaterial] =useState("")
+    const[lessonId,setLessonId] =useState<string>("")
+    const[writtenMaterial,setWrittenMaterial] =useState(allLessonsInModule[0]?.content)
+    const[showSideBar,setShowSideBar] =useState(false)
 
 
     useEffect(()=>{
@@ -47,26 +50,39 @@ export default function ModuleContents({ params }: { params: Promise<{ id: strin
         }
     })
     return(
-        <div className={"w-full overflow-scroll"}>
+        <div className={"lg:w-[70%] w-full mt-2 lg:mt-10 md:mt-10 items-center justify-center lg:m-auto h-full"}>
+            <div className={"flex justify-end items-center w-full"}>
+                <button
+                    className={"cursor-pointer"}
+                    onClick={()=>{
+                    setShowSideBar(!showSideBar)
+                }}>{showSideBar?<Close/>:<MenuIcon/>}</button>
+            </div>
             {fetched &&
-                <div className={"flex w-full h-full m-[0 auto] justify-center"}>
-                    <LessonContents
-                        id={moduleId}
-                        slug={allLessonsInModule[0]?.slug}
-                        title={title}
-                        content={writtenMaterial}/>
-                    <aside className={"flex flex-col gap-4 overflow-scroll"}>
-                        {allLessonsInModule?.map((lesson,index)=>(
-                            <div
-                                key={index}
-                                className={"cursor-pointer"}
-                                onClick={()=>{
-                                    setModuleId(lesson?.id)
-                                    setTitle(lesson?.title)
-                                    setWrittenMaterial(lesson?.content)
-                                }}>{lesson.title}</div>
-                        ))}
-                    </aside>
+                <div className={"relative flex w-full h-[95vh] justify-center"}>
+                    <div className={"h-[90vh]"}>
+                        <LessonContents
+                            id={lessonId}
+                            slug={allLessonsInModule[0]?.slug}
+                            title={title}
+                            content={writtenMaterial}/>
+                    </div>
+                    {showSideBar&&<aside className={`h-[90vh]  absolute z-[999] mt-10 opacity-100 p-4 border 
+                     rounded border-gray-400 bg-black w-52  right-0 shadow-xl`}>
+                        <p className={"font-bold text-xl"}>All lessons</p>
+                            {allLessonsInModule?.map((lesson,index)=>(
+                                <div
+                                    key={index}
+                                    className={"cursor-pointer mb-2 mt-2 font-medium"}
+                                    onClick={()=>{
+                                        setLessonId(lesson?.id)
+                                        setTitle(lesson?.title)
+                                        setWrittenMaterial(lesson?.content)
+                                        setShowSideBar(false)
+                                    }}>{lesson.title}</div>
+                            ))}
+                        </aside>
+                    }
                 </div>
 
             }

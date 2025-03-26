@@ -1,24 +1,22 @@
 "use client"
 import Aside from "@/components/aside";
-import AuthContext from "@/context/authProvider";
-import { useContext } from "react";
-
+import MobileHeader from "@/components/ui/mobileHeader";
 
 export default function DashBoardLayout({children,}: Readonly<{
     children: React.ReactNode;
 }>) {
 
-    const auth =useContext(AuthContext)
-    if(auth ==null){
-        // window.location.replace("/")
-        return
-    }
     return (
-        <main className={"flex [&>*]:p-4"}>
-            <div className={"fixed"}>
-                <Aside/>
+        <main className={"flex flex-col md:flex-row lg:flex-row [&>*]:p-4"}>
+            <div className={"md:fixed md:contents lg:fixed lg:contents "}>
+                <div className={"hidden lg:fixed"}>
+                    <Aside/>
+                </div>
+                <div className={"lg:hidden md:hidden contents"}>
+                    <MobileHeader/>
+                </div>
             </div>
-            <div className={"flex w-[80%] mt-2 ml-56 "}>
+            <div className={"w-full md:w-[90%] lg:w-[90%] mt-2 md:ml-4 lg:ml-4 "}>
                 {children}
             </div>
 

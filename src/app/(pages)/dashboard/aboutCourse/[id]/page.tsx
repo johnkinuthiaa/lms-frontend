@@ -55,13 +55,13 @@ export default  function CourseInformation ({ params }: { params: Promise<{ id: 
         }
     })
     return(
-        <div className={"w-[80%] justify-center items-center m-[0 auto] flex flex-col"}>
-            <div className={"w-[80%] m-[0 auto] flex flex-col justify-center items-center gap-2"} id={course?.id}>
-                <div className={"font-bold mt-10"}>{course?.title}</div>
-                <div className={"leading-7"}>{course?.description}</div>
+        <div className={"lg:w-[90%] md:w-[90%] w-full flex flex-col"}>
+            <div className={"lg:w-[80%] md:w-[80%] w-full m-[0 auto] flex flex-col md:justify-center lg:justify-center items-center gap-2"} id={course?.id}>
+                <div className={"font-bold text-xl mt-4 mb-4"}>{course?.title}</div>
+                <div className={"leading-7 break-words"}>{course?.description}</div>
             </div>
             <div className={"mt-10 font-bold"}>Modules in course:</div>
-            <div className={"flex gap-2 w-full flex-wrap justify-between p-4 [&>*]:rounded-xl  [&>*]:border [&>*]:border-gray-700"}>
+            <div className={"flex w-full flex-wrap  gap-4  p-2 [&>*]:rounded-xl  [&>*]:border [&>*]:border-gray-700"}>
                 {course?.modulesInCourse.map((mod,index:number)=>(
                     <div
                         key={index}
