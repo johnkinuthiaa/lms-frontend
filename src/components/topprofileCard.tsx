@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect,useState } from "react";
 
 type UserInfo={
@@ -14,9 +15,14 @@ export default function TopProfileCard(){
     const[id,setId] =useState<string>("")
     const[name,setName] =useState<string>("")
     const[image,setImage] =useState<string>("")
+    const router =useRouter()
     useEffect(()=>{
-        const userInfo:UserInfo =JSON.parse(sessionStorage.getItem("user") as string)
-        setName(userInfo.username)
+        const userInfo:UserInfo|null =JSON.parse(sessionStorage.getItem("user") as string)
+        if(userInfo ===null){
+            router.push("/")
+            return
+        }
+        setName(userInfo?.username)
         setId(userInfo.id)
         if(userInfo.profileImage ===null || userInfo.profileImage ===""){
             setImage("https://i.pinimg.com/236x/77/af/ff/77afff1ec418fba07ca2e9f31e13d6d9.jpg")
