@@ -4,10 +4,12 @@ import {BsArrowUpRight} from "react-icons/bs";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+
 export default function Hero(){
     const router =useRouter()
     return(
-        <section className={"flex mt-20 md:items-center lg:items-center lg:p-5 gap-5 md:p-3 p-2 flex-col md:flex-row lg:flex-row"}>
+        <section
+            className={"flex mt-20  md:items-center lg:items-center lg:p-5 gap-5 md:p-3 p-2 flex-col md:flex-row lg:flex-row"}>
             <div className={"flex flex-col md:w-[45%] lg:w-[45%] w-full "}>
                 <h1 className={"lg:text-6xl md:text-6xl text-4xl font-light"}>Track Your <span className={"font-bold"}>Learning Progress</span> </h1>
                 <p className={"mt-10"}>Stay on top of your game with realtime learning tools,insights and interactive quizzes and exercises</p>
