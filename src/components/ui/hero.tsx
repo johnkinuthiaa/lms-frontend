@@ -1,4 +1,4 @@
-import {ArrowUpward, Person, Star} from "@mui/icons-material";
+import {Person, Star} from "@mui/icons-material";
 import {BsArrowUpRight} from "react-icons/bs";
 
 export default function Hero(){
