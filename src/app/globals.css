@@ -54,4 +54,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   scrollbar-width: none;
 }
-
+@media  screen and (max-width: 648px) {
+  .header__nav{
+    display: none!important;
+  }
+}
