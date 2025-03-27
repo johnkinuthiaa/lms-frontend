@@ -1,7 +1,7 @@
 export default function Footer(){
     const year =new Date().getFullYear()
     return(
-        <footer className={"lg:w-[45%] m-auto p-4 leading-9"}>
+        <footer className={"lg:w-[45%] m-auto mt-6 p-4 leading-9"}>
             <section className={"flex gap-4 flex-col md:flex-row lg:flex-row md:items-center md:justify-between lg:items-center lg:justify-between" +
                 " rounded"}>
                 <div className={"flex flex-col"}>
@@ -15,7 +15,7 @@ export default function Footer(){
                             type={"email"}
                             className={"bg-gray-700  p-2 rounded outline-none active:outline-white "}
                             placeholder={"jim@gmail.com"}
-                            autoFocus={true}
+                            autoFocus={false}
                         />
                         <button
                             type={"button"}
