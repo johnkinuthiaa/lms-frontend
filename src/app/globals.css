@@ -11,6 +11,35 @@
   /*--font-sans: var(--font-geist-sans);*/
   /*--font-mono: var(--font-geist-mono);*/
 }
+.carrousel{
+  animation: carousel;
+  animation-iteration-count: infinite;
+  animation-duration: 13s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  animation-direction: normal;
+}
+.carrousel_reverse{
+  animation: carousel;
+  animation-iteration-count: infinite;
+  animation-duration: 13s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+
+  animation-direction: reverse;
+}
+.carrousel:hover,.carrousel_reverse:hover{
+  animation: none;
+}
+@keyframes carousel {
+  0%{
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 210px * 3));
+  }
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {

@@ -5,8 +5,13 @@ export default function Testimonials(){
     const firstCarousel =testimonialList.slice(0,10)
     const secondCarousel =testimonialList.slice(10,testimonialList.length-1)
     return(
-        <section id={"#testimonial"} className={"flex flex-col"}>
-            <div className={"flex overflow-hidden"}>
+        <section id={"#testimonial"} className={"flex flex-col overflow-hidden "}>
+            <div className={"flex flex-col mt-10 mb-10 w-[80%] m-auto items-center"}>
+                <div className={"font-bold text-xl text-center"}>What our Experts Say</div>
+                <p className={"mt-4"}>Gain insights from industry experts on how our platform empowers learners to grow,
+                upskill and reach their full potential</p>
+            </div>
+            <div className={"flex  carrousel "}>
                 {firstCarousel.map((carousel1,index)=>(
                     <div key={index}>
                         <TestimonialCard
@@ -17,7 +22,7 @@ export default function Testimonials(){
                     </div>
                 ))}
             </div>
-            <div className={"flex overflow-hidden"}>
+            <div className={"flex mt-10 mb-10 carrousel_reverse"}>
                 {secondCarousel.map((carousel2,index)=>(
                     <div key={index}>
                         <TestimonialCard
