@@ -4,7 +4,7 @@ import {Done} from "@mui/icons-material";
 export default function PricingCard(){
     const router =useRouter()
     return(
-        <div className={"flex flex-col mt-8 lg:w-80 w-[90%] p-2 border outline-none border-gray-600 rounded-xl"}>
+        <div className={"flex flex-col mt-8 lg:w-96 md:w-80 sm:w-[90%] p-2 border outline-none border-gray-600 rounded-xl"}>
             <div className={"text-center text-xl font-bold mb-5"}>Starter</div>
             <p>Start learning today with free courses forever</p>
             <div className={"font-bold text-xl mb-5 mt-5"}>Free</div>

@@ -15,7 +15,7 @@ export default function Header(){
                     <nav className={"flex ml-4"}>
                         <ul className={"p-2 flex gap-3 [&>li]:mb-4 [&>li]:gap-2 [&>li]:font-bold [&>li]:cursor-pointer"}>
                             <li onClick={()=>router.push("/")}>Home</li>
-                            <li>Contact</li>
+                            <li onClick={()=>router.push("/contactUs")}>Contact</li>
                             <li>About us</li>
                         </ul>
                     </nav>
@@ -51,7 +51,7 @@ export default function Header(){
                     <nav className={"flex ml-4"}>
                         <ul className={"p-2 flex flex-col [&>li]:mb-4 [&>li]:flex [&>li]:gap-2 [&>li]:items-center [&>li]:cursor-pointer"}>
                             <li onClick={()=>router.push("/")}><Home/>Home</li>
-                            <li><Phone/>Contact</li>
+                            <li onClick={()=>router.push("/contactUs")}><Phone/>Contact</li>
                             <li><Info/>About us</li>
                         </ul>
                     </nav>
