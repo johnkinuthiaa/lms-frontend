@@ -3,6 +3,7 @@ import {useRouter} from "next/navigation";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {useState} from "react"
 import {Home, Info, Phone} from "@mui/icons-material";
+import Buttons from "./buttons";
 
 export default function Header(){
     const router =useRouter()
@@ -21,20 +22,10 @@ export default function Header(){
                     </nav>
                 </div>
                 <div className={"flex gap-4 align-center"}>
-                    <div className={"flex gap-2 [&>*]:pt-2 [&>*]:pb-2 [&>*]:pr-3 [&>*]:pl-3 [&>*]:rounded [&>*]:cursor-pointer"}>
-                        <button className={"bg-blue-600"}
-                                onClick={(e)=>{
-                                    e.preventDefault()
-                                    router.push("/login")
-                                }}
-                        >Login</button>
-                        <button
-                            className={"bg-white text-black"}
-                            onClick={(e)=>{
-                                e.preventDefault()
-                                router.push("/register")
-                            }}
-                        >Sign up</button>
+                    <div className={" flex gap-2"}>
+                        <div className={"buttons flex gap-2 [&>*]:pt-2 [&>*]:pb-2 [&>*]:pr-3 [&>*]:pl-3 [&>*]:rounded [&>*]:cursor-pointer"}>
+                            <Buttons/>
+                        </div>
                     </div>
                     <button
                         className={"cursor-pointer lg:hidden md:hidden"}
@@ -47,13 +38,17 @@ export default function Header(){
                 </div>
             </header>
             {openMobileMenu &&
-                <aside className={"absolute -mt-4 lg:hidden md:hidden bg-black w-[55%] border-r border-r-gray-700 h-full z-999 "}>
-                    <nav className={"flex ml-4"}>
-                        <ul className={"p-2 flex flex-col [&>li]:mb-4 [&>li]:flex [&>li]:gap-2 [&>li]:items-center [&>li]:cursor-pointer"}>
+                <aside className={"absolute -mt-4 lg:hidden md:hidden bg-black w-[55%] border-r border-r-gray-600 h-full z-999 "}>
+                    <nav className={"flex ml-4 flex-col"}>
+                        <ul className={"p-2 flex flex-col [&>li]:mb-6 [&>li]:flex [&>li]:gap-2 [&>li]:items-center [&>li]:cursor-pointer"}>
                             <li onClick={()=>router.push("/")}><Home/>Home</li>
                             <li onClick={()=>router.push("/contactUs")}><Phone/>Contact</li>
                             <li><Info/>About us</li>
                         </ul>
+                        <div className={"mt-7 flex gap-2 w-full [&>*]:pt-2 [&>*]:pb-2" +
+                            " [&>*]:pr-3 [&>*]:pl-3 [&>*]:rounded [&>*]:w-6/12 p-2 [&>*]:font-bold [&>*]:cursor-pointer"}>
+                            <Buttons/>
+                        </div>
                     </nav>
                 </aside>}
         </div>

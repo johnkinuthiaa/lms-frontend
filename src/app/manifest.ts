@@ -2,8 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: "learning management system",
-        short_name: "lms",
+        name: "Nevani Learning",
+        short_name: "Nevani Learning",
+        description: "A learning management system to help people learn coding",
         icons: [
             {
                 src: "/web-app-manifest-192x192.png",

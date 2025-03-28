@@ -55,7 +55,7 @@ body {
   scrollbar-width: none;
 }
 @media  screen and (max-width: 648px) {
-  .header__nav{
+  .header__nav,.buttons{
     display: none!important;
   }
 }
