@@ -39,11 +39,11 @@ export default function Footer(){
                             <div className={"font-bold "}>Explore</div>
                             <nav className={"mt-4"}>
                                 <ul className={"[&>*]:text-gray-300 [&>*]:cursor-pointer [&>*]:hover:text-gray-100"}>
-                                    <li>Home</li>
+                                    <li><a href={"/"}>Home</a></li>
                                     <li>Features</li>
                                     <li>Blog</li>
-                                    <li>Pricing</li>
-                                    <li>Testimonials</li>
+                                    <li ><a href={"#pricing"}>Pricing</a></li>
+                                    <li> <a href={"#testimonials"}>Testimonials</a></li>
                                 </ul>
                             </nav>
                         </div>

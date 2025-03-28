@@ -56,11 +56,11 @@ export default function Dashboard(){
             </div>
 
             <div className={"flex flex-wrap mt-5 [&>*]:items-center [&>*]:gap-2 gap-2"}>
-                <CourseInfoCard metrics={userCourses.length} text={"Enrolled courses"} icon={"<Book/>"}/>
+                <CourseInfoCard metrics={userCourses.length} text={"Enrolled courses"}/>
             </div>
-            <div className={"flex flex-col-reverse lg:flex-row md:flex-row mt-4 md:mt-16 lg:mt-16  gap-2"}>
+            <div className={"flex flex-col-reverse lg:flex-row md:flex-row mt-10 md:mt-16 lg:mt-16  gap-2"}>
                 <div className={"flex-col flex flex-3/5  lg:[&>*]:p-2 md:[&>*]:p-2 "}>
-                    <div className={"lg:text-2xl text-xl font-medium content-center"}>My Courses</div>
+                    <div className={"lg:text-2xl text-xl font-bold content-center"}>My Courses</div>
                     <div className={"flex flex-col gap-2"}>
                         {userCourses.length>0?(
                             userCourses.map((course,index)=>(
@@ -78,21 +78,22 @@ export default function Dashboard(){
                                 }}/>
                             ))
                             ):(
-                            <div>User does not have any course enrolled!</div>
+                            <div className={"mt-5 flex flex-col items-center"}>
+                                <div>
+                                    User does not have any course enrolled!
+                                    Navigate to all courses page to view and enroll
+                                </div>
+                                <button
+                                    className={"sm:w-[60%] mt-10 gap-2  font-bold p-2 hover:bg-[rgb(255,255,255,0.8)] bg-white" +
+                                        " text-black flex justify-center items-center rounded cursor-pointer"}
+                                >Available courses</button>
+
+
+                            </div>
                         )}
-                        <div>items</div>
-                        <div>items</div>
-                        <div>items</div>
-                        <div>items</div>
-                        <div>items</div>
-                        <div>items</div>
-                        <div>items</div>
-                        <div>items</div>
+
                     </div>
 
-                </div>
-                <div className={"flex-2/5 border-gray-600 border"}>
-                    Active courses
                 </div>
             </div>
 
