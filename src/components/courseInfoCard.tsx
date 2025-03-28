@@ -1,4 +1,4 @@
-import {Book, School} from "@mui/icons-material";
+import {School} from "@mui/icons-material";
 
 type InfoProps={
     metrics:number,
