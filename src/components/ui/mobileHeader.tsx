@@ -8,10 +8,10 @@ export default function MobileHeader(){
     const[showSideBar,setShowSideBar] =useState<boolean>(false)
 
     return(
-        <>
+        <div className={"relative"}>
             <header>
                 <div className={"flex justify-between"}>
-                    <h1>Lms</h1>
+                    <h1 className={"font-bold"}>Nevani Learning</h1>
                     <button
                         className={"cursor-pointer"}
                         onClick={()=>{
@@ -20,12 +20,12 @@ export default function MobileHeader(){
                 </div>
             </header>
             {showSideBar&&
-                <div className={"w-[80%]"}
+                <div className={"w-[80%] absolute z-9999 bg-black"}
                      onClick={()=>setShowSideBar(false)}
                 >
                     <Aside/>
                 </div>
             }
-        </>
+        </div>
 
     )}

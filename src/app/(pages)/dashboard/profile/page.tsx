@@ -22,7 +22,7 @@ export default function ProfilePage(){
     const uploadUrl =`http://localhost:8080/api/v1/users/${userId}/upload-profile-photo`
     const[showChangeProfileImageForm,setShowProfileImageForm] =useState(false)
 
-    const [userProfileImage,setUserProfileImage]=useState<string>("https://i.pinimg.com/236x/be/38/78/be3878c34f93d1663a6e5f6af4b78e9c.jpg")
+    const [userProfileImage,setUserProfileImage]=useState<string>("/defaultProfile.jpeg")
     useEffect(() => {
         const user:User|null =JSON.parse(sessionStorage?.getItem("user") as string)
         if(user !==null){
@@ -30,7 +30,6 @@ export default function ProfilePage(){
             setUsername(user?.username)
             setEmail(user?.email)
             setMobile(user?.mobile)
-
         }
 
     }, []);
@@ -57,16 +56,19 @@ export default function ProfilePage(){
                     messageTimeout(data.message)
                     return
                 }
-                const byteCharacters =atob(data?.user?.profileImage)
-                const byteNumbers = new Array(byteCharacters.length);
-                for (let i = 0; i < byteCharacters.length; i++) {
-                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                if(data?.user?.profileImage ===null){
+                    setUserProfileImage("/defaultProfile.jpeg")
+                }else{
+                    const byteCharacters =atob(data?.user?.profileImage)
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    const blob = new Blob([byteArray]);
+                    const myUrl =URL.createObjectURL(blob)
+                    setUserProfileImage(myUrl)
                 }
-                const byteArray = new Uint8Array(byteNumbers);
-                const blob = new Blob([byteArray]);
-                const myUrl =URL.createObjectURL(blob)
-                setUserProfileImage(myUrl)
-
             }
         }catch (e) {
             messageTimeout(e+"")
@@ -119,7 +121,7 @@ export default function ProfilePage(){
                         className={"rounded-full h-25 w-25"}
                     ></Image>
                     <div className={"flex gap-3 [&>*]:rounded-xl [&>*]:cursor-pointer" +
-                        " [&>*]:w-fit [&>*]:h-fit [&>*]:p-2 lg:[&>*]:p-4 [&>*]:font-bold "}>
+                        " [&>*]:w-fit [&>*]:h-fit [&>*]:p-2 lg:[&>*]:p-3 [&>*]:font-bold "}>
                         <button className={"bg-blue-500"} onClick={()=>setShowProfileImageForm(true)}>Change Picture</button>
                         <button className={"bg-red-500"}>DeletePicture</button>
                     </div>

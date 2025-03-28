@@ -6,6 +6,8 @@ type MarkdownProps ={
 }
 export default function MarkdownToJsx({content}:MarkdownProps){
     return(
-        <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
+        <div className={"leading-7"}>
+            <Markdown remarkPlugins={[remarkGfm]} >{content}</Markdown>
+        </div>
     )
 }

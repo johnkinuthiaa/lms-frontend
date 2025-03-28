@@ -26,12 +26,14 @@ export default function Aside(){
     return(
         <aside className={"flex flex-2/12 p-3 flex-col h-[100vh] border-r bg-blend-screen border-gray-600"}>
             <div className={"flex items-center justify-between"}>
-                <div className={"text-xl font-bold"}>Lms</div>
-                <button className={"cursor-pointer"}>
+                <div className={"text-xl font-bold"}></div>
+                <button className={"lg:hidden md:hidden cursor-pointer bg-white rounded-full p-1 font-bold hover:bg-red-500  hover:text-white text-black"}>
                     {dashboardOpen?<Close/>:<ArrowRight/>}
                 </button>
             </div>
-            <nav className={"mt-9 [&>div]:p-4 [&>div]:rounded-xl [&>div]:font-medium [&>div]:cursor-pointer [&>div]:mt-2 [&>div]:flex [&>div]:gap-3 [&>div]:align-center [&>div]:hover:bg-gray-700"}>
+            <nav className={"mt-9 [&>div]:p-4 [&>div]:rounded-xl [&>div]:font-medium" +
+                " [&>div]:cursor-pointer [&>div]:mt-2 [&>div]:flex [&>div]:gap-3 [&>div]:align-center" +
+                " [&>div]:hover:bg-gray-700"}>
                 <div
                     onClick={()=>router.push("/dashboard")}
                     className={`${pathname==="/dashboard"&&"bg-blue-500"}`}>

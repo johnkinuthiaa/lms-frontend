@@ -10,11 +10,16 @@ type CourseParams ={
     createdOn:string,
     slug:string,
     courseImage:string,
-    category:string
+    category:string,
+    instructorDetails:{
+        username:string,
+        profileImage:string
+    }
 }
 export default function AllCourses(){
     const [courseList,setCourseList] =useState<CourseParams[]>([])
     const[message,setMessage] =useState<string>("")
+
     const myHeaders =new Headers()
     myHeaders.append("Content-Type","application/json")
     useEffect(()=>{
@@ -55,7 +60,11 @@ export default function AllCourses(){
                         price={course.price}
                         description={course.description}
                         title={course.title}
-                        courseImages={course.courseImage} />
+                        courseImages={course.courseImage}
+                        instructorDetails={{
+                        username: course.instructorDetails.username,
+                        profileImage: course.instructorDetails.profileImage
+                    }} />
                 ))}
             </section>
         </main>

@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react"
 
 import {Check, CopyAll, Send} from "@mui/icons-material";
+import MarkdownToJsx from "@/components/markdownFormatter";
 
 type MessageStructure={
     content:string,
@@ -29,6 +30,11 @@ export default function AiWrapper(){
     useEffect(() => {
         setMessages([...messages,singleMessage])
     }, []);
+    useEffect(()=>{
+        setMessages([...messages,realAiText])
+        setLoading(false)
+
+    },[realAiText])
     const url:string|undefined=process.env.NEXT_PUBLIC_GEMINI_KEY
 
     async function chat() {
@@ -46,26 +52,23 @@ export default function AiWrapper(){
             const data =await response.json()
             if(data){
                 setRealAiText({content: data.candidates[0].content.parts[0].text, sender: "AI"})
-                messages.push(realAiText)
-                setMessages(messages)
-                // setRealAiText({content: "", sender: "AI"})
-                console.log(realAiText)
-                setLoading(false)
             }
 
         }
 
     }
     return(
-        <main className={"flex flex-col h-[88vh]  w-[80%] m-auto items-center ml-10 "}>
-            <div className={"font-extrabold  text-xl"}>Try out our chatgpt wrapper</div>
-            <div className={"overflow-scroll w-[80%] p-4 h-[90%] ml-2  flex flex-col mt-4 relative"}>
+        <main className={"flex flex-col h-[90vh] w-full lg:h-[88vh] md:h-[88vh]  lg:w-[80%]" +
+            "md:w-[80%] lg:m-auto md:m-auto lg:items-center md:items-center lg:ml-10 md:ml-10 "}>
+            <div className={"font-extrabold text-center text-xl backdrop-blur-xs"}>Try out our Gemini wrapper</div>
+            <div className={"overflow-scroll lg:w-[80%] md:w-[80%] w-full lg:p-4 md:p-4 p-1 h-[90%]" +
+                " lg:ml-2 md:ml-2 flex flex-col mt-4 relative"}>
                 {messages.map((message:MessageStructure,index:number)=>(
-                    <div key={index} className={`${message.sender==="USER"&&""} w-fit max-w-96 mt-2 p-2 rounded-xl `}>
+                    <div key={index} className={`w-fit max-w-96 mt-2 lg:p-2 md:p-2 p-1 rounded-xl `}>
                         <div
-                            className={`${message.sender==="USER"?"bg-blue-600":"bg-gray-700"}
-                            rounded-xl p-2 w-fit max-w-80 break-words`}>
-                            {message.content}
+                            className={`${message.sender==="USER"?"bg-blue-600":" bg-gray-700"}
+                            rounded-xl p-2 w-fit md:w-96 lg:w-96 break-words `}>
+                            <MarkdownToJsx content={message.content}/>
                         </div>
                         {message.sender==="AI"&&
                             <div className={"flex mt-1 gap-2 items-center justify-end"}>
@@ -81,7 +84,7 @@ export default function AiWrapper(){
                     </div>
                 ))}
             </div>
-            <div className={"w-[90%] p-4 border border-gray-700 mr-4 mb-2"}>
+            <div className={"w-full md:w-[60%] lg:w-[60%] p-4 lg:mr-4 md:mr-4 mb-2"}>
                 <form className={"w-full flex gap-2"}
                       onSubmit={(e)=>{
                           e.preventDefault()
@@ -96,7 +99,7 @@ export default function AiWrapper(){
                     <input
                         type={"text"}
                         placeholder={"chat with our wrapper"}
-                        className={"w-11/12 outline-0 border p-2 overflow-scroll border-gray-700 rounded-xl"}
+                        className={"w-12/12 outline-0 border p-2 overflow-scroll border-gray-700 rounded-xl"}
                         value={text}
                         onChange={(e)=>{
                             setText(e.target.value)

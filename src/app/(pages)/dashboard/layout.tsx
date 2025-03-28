@@ -8,11 +8,11 @@ export default function DashBoardLayout({children,}: Readonly<{
 
     return (
         <main className={"flex flex-col md:flex-row lg:flex-row [&>*]:p-4"}>
-            <div className={"md:fixed md:contents lg:fixed lg:contents "}>
-                <div className={"hidden lg:fixed"}>
+            <div className={"md:fixed md:contents lg:fixed lg:contents"}>
+                <div className={"desktop_sidebar hidden lg:contents md:contents"}>
                     <Aside/>
                 </div>
-                <div className={"lg:hidden md:hidden contents"}>
+                <div className={"mobile_sidebar lg:hidden md:hidden"}>
                     <MobileHeader/>
                 </div>
             </div>
