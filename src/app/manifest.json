@@ -1,5 +1,6 @@
 {
   "name": "Nevani Learning",
+  "version": "1.0.0",
   "short_name": "Nevani Learning",
   "description": "A learning management system to help people learn coding",
   "icons": [
@@ -17,6 +18,6 @@
     }
   ],
   "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "background_color": "rgb(0,0,0)",
   "display": "standalone"
 }
